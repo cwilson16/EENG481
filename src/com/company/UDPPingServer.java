@@ -6,7 +6,7 @@ import java.io.*;
 public class UDPPingServer {
 
     public static void main(String[] args) {
-        DatagramSocket serverPing;
+        DatagramSocket serverPing; // testing netbeans/git in embedded lab
         DatagramPacket query, response;
         int serverPort = 12000;
         double rand;
@@ -32,3 +32,5 @@ public class UDPPingServer {
     }
 
 }
+// does adding another line make a difference?
+// we'll see
