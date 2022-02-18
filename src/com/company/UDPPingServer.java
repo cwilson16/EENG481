@@ -23,7 +23,7 @@ public class UDPPingServer {
                 int clientPort = query.getPort();
                 System.out.println(new String(query.getData()));
                 response = new DatagramPacket(query.getData(), 0, query.getData().length, clientIP, clientPort);
-                //DatagramPacket(byte[] buf, int offset, int length, InetAddress address, int port)
+                // constructor used above: DatagramPacket(byte[] buf, int offset, int length, InetAddress address, int port)
                 serverPing.send(response);
             }
         } catch(IOException e) {
