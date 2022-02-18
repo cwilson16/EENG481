@@ -5,7 +5,7 @@ import java.io.*;
 
 public class UDPPingClient {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {/*
 
         DatagramSocket clientPing;
         DatagramPacket query, response;
@@ -18,7 +18,7 @@ public class UDPPingClient {
         } catch(IOException e) {
             System.out.println("Could not establish server!");
         }
-
+*/
     }
 
 }

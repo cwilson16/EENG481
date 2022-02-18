@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class UDPClient {
@@ -13,6 +14,8 @@ public class UDPClient {
         DatagramPacket query, response;
         Scanner input = new Scanner(System.in); // couldn't import textIO library...
         String message = input.nextLine(); // so i'm trying to do it with scanner.
+        //System.out.println(message.toUpperCase(Locale.ROOT));
+
         try {
             int serverPort = 12000;
             InetAddress serverIP = InetAddress.getByName("localhost");
