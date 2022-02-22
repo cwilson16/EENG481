@@ -24,7 +24,9 @@ public class UDPClient {
             clientSocket.send(query);
             response = new DatagramPacket(new byte[1024], 1024);
             clientSocket.receive(response);
-            System.out.println(new String(response.getData()));
+            String testResponse = new String(response.getData(), response.getOffset(), response.getLength());
+            System.out.println(testResponse);
+            //System.out.println(new String(response.getData()));
             clientSocket.close();
         }
         catch (IOException e) {

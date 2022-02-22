@@ -15,7 +15,7 @@ public class UDPServer {
                 serverSocket.receive(query);
                 InetAddress clientIP = query.getAddress();
                 int clientPort = query.getPort();
-                String message = new String(query.getData());
+                String message = new String(query.getData(), query.getOffset(), query.getLength());
                 message = message.toUpperCase();
                 byte[] byteArray = message.getBytes();
                 response = new DatagramPacket(byteArray, 0, byteArray.length, clientIP, clientPort);
