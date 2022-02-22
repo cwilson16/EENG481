@@ -22,15 +22,15 @@ public class UDPPingClient {
                 InetAddress serverIP = InetAddress.getByName("localhost");
                 clientSocket = new DatagramSocket();
                 query = new DatagramPacket (message.getBytes(), message.getBytes().length, serverIP, serverPort);
-                float timeSent = System.currentTimeMillis();
+                float timeSent = System.nanoTime();
                 clientSocket.send(query);
                 response = new DatagramPacket(new byte[1024], 1024);
                 clientSocket.receive(response);
-                float timeReceived = System.currentTimeMillis();
+                float timeReceived = System.nanoTime();
                 float roundTripTime = timeSent - timeReceived;
                 String testResponse = new String(response.getData(), response.getOffset(), response.getLength());
                 System.out.println("Response: " + testResponse);
-                System.out.println("Round Trip time was: " + roundTripTime + " milliseconds.");
+                System.out.println("Round Trip time was: " + roundTripTime + " nanoseconds.");
                 //System.out.println(new String(response.getData()));
                 clientSocket.close();
             }
