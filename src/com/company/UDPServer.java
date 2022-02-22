@@ -13,6 +13,7 @@ public class UDPServer {
             while (true) {
                 query = new DatagramPacket(new byte[1024], 1024);
                 serverSocket.receive(query);
+                System.out.println("query received"); // for testing
                 InetAddress clientIP = query.getAddress();
                 int clientPort = query.getPort();
                 String message = new String(query.getData(), query.getOffset(), query.getLength());
