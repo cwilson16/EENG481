@@ -19,7 +19,7 @@ public class UDPPingClient {
                 Date now = new Date();
                 String message = "Ping " + i + " " + now.toString();
                 int serverPort = 12000;
-                InetAddress serverIP = InetAddress.getByName("localhost");
+                InetAddress serverIP = InetAddress.getByName("192.168.0.10");
                 clientSocket = new DatagramSocket();
                 query = new DatagramPacket (message.getBytes(), message.getBytes().length, serverIP, serverPort);
                 float timeSent = System.nanoTime();
