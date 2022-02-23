@@ -15,6 +15,7 @@ public class UDPServer {
                 serverSocket.receive(query);
                 System.out.println("query received"); // for testing
                 InetAddress clientIP = query.getAddress();
+                System.out.println("Client's IP address is: " + clientIP);
                 int clientPort = query.getPort();
                 String message = new String(query.getData(), query.getOffset(), query.getLength());
                 message = message.toUpperCase();
