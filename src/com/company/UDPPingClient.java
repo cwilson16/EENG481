@@ -30,16 +30,14 @@ public class UDPPingClient {
                 response = new DatagramPacket(new byte[1024], 1024);
                 try{
                     clientSocket.receive(response);
+                    float timeReceived = System.nanoTime();
+                    float roundTripTime = timeSent - timeReceived;
+                    String testResponse = new String(response.getData(), response.getOffset(), response.getLength());
+                    System.out.println("Response: " + testResponse);
+                    System.out.println("Round Trip time was: " + roundTripTime + " nanoseconds.");
                 } catch(IOException SoTimeout){
                     System.out.println("timed out");
                 }
-
-                float timeReceived = System.nanoTime();
-                float roundTripTime = timeSent - timeReceived;
-                String testResponse = new String(response.getData(), response.getOffset(), response.getLength());
-                System.out.println("Response: " + testResponse);
-                System.out.println("Round Trip time was: " + roundTripTime + " nanoseconds.");
-                //System.out.println(new String(response.getData()));
                 clientSocket.close();
             }
             catch (IOException e) {
