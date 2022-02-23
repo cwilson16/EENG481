@@ -10,17 +10,12 @@ public class UDPPingClient {
     public static void main(String[] args) {
         DatagramSocket clientSocket;
         DatagramPacket query, response;
-        Scanner input = new Scanner(System.in); // couldn't import textIO library...
-        //String message = input.nextLine(); // so i'm trying to do it with scanner.
-        //System.out.println(message.toUpperCase(Locale.ROOT));
 
         for(int i = 0; i < 10; i++) {
             try {
                 Date now = new Date();
-                String message = "Ping " + i + " " + now.toString();
+                String message = "Ping " + (i+1) + " " + now.toString();
                 int serverPort = 12000;
-                //byte[] ethanIP = new byte[]{byte 147, 222, 178, 209};
-                //InetAddress serverIP = InetAddress.getByName("147.222.178.209");
                 InetAddress serverIP = InetAddress.getByName("localhost");
                 clientSocket = new DatagramSocket();
                 clientSocket.setSoTimeout(1000);
@@ -36,7 +31,7 @@ public class UDPPingClient {
                     System.out.println("Response: " + testResponse);
                     System.out.println("Round Trip time was: " + roundTripTime + " milliseconds.");
                 } catch(IOException SoTimeout){
-                    System.out.println("Packet: "+ i + " timed out");
+                    System.out.println("Packet: "+ (i+1) + " timed out");
                 }
                 clientSocket.close();
             }

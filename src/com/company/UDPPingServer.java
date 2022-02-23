@@ -6,7 +6,7 @@ import java.io.*;
 public class UDPPingServer {
 
     public static void main(String[] args) {
-        DatagramSocket serverPing; // testing netbeans/git in embedded lab
+        DatagramSocket serverPing;
         DatagramPacket query, response;
         int serverPort = 12000;
         double rand;
@@ -21,9 +21,8 @@ public class UDPPingServer {
                 }
                 InetAddress clientIP = query.getAddress();
                 int clientPort = query.getPort();
-                System.out.println(new String(query.getData(), query.getOffset(), query.getLength()));
+                System.out.println(new String(query.getData()));
                 response = new DatagramPacket(query.getData(), 0, query.getData().length, clientIP, clientPort);
-                // constructor used above: DatagramPacket(byte[] buf, int offset, int length, InetAddress address, int port)
                 serverPing.send(response);
             }
         } catch(IOException e) {
@@ -33,5 +32,3 @@ public class UDPPingServer {
     }
 
 }
-// does adding another line make a difference?
-// we'll see
