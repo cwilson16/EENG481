@@ -21,7 +21,7 @@ public class UDPPingClient {
                 int serverPort = 12000;
                 //byte[] ethanIP = new byte[]{byte 147, 222, 178, 209};
                 //InetAddress serverIP = InetAddress.getByName("147.222.178.209");
-                InetAddress serverIP = InetAddress.getByName("192.168.0.12");
+                InetAddress serverIP = InetAddress.getByName("192.168.0.10");
                 clientSocket = new DatagramSocket();
                 clientSocket.setSoTimeout(1000);
                 query = new DatagramPacket (message.getBytes(), message.getBytes().length, serverIP, serverPort);
