@@ -21,7 +21,7 @@ public class UDPPingServer {
                 }
                 InetAddress clientIP = query.getAddress();
                 int clientPort = query.getPort();
-                System.out.println(new String(query.getData()));
+                System.out.println(new String(query.getData(), query.getOffset(), query.getLength()));
                 response = new DatagramPacket(query.getData(), 0, query.getData().length, clientIP, clientPort);
                 // constructor used above: DatagramPacket(byte[] buf, int offset, int length, InetAddress address, int port)
                 serverPing.send(response);

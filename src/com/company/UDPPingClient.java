@@ -21,20 +21,20 @@ public class UDPPingClient {
                 int serverPort = 12000;
                 //byte[] ethanIP = new byte[]{byte 147, 222, 178, 209};
                 //InetAddress serverIP = InetAddress.getByName("147.222.178.209");
-                InetAddress serverIP = InetAddress.getByName("localhost");
+                InetAddress serverIP = InetAddress.getByName("192.168.0.12");
                 clientSocket = new DatagramSocket();
                 clientSocket.setSoTimeout(1000);
                 query = new DatagramPacket (message.getBytes(), message.getBytes().length, serverIP, serverPort);
-                float timeSent = System.nanoTime();
+                double timeSent = System.nanoTime();
                 clientSocket.send(query);
                 response = new DatagramPacket(new byte[1024], 1024);
                 try{
                     clientSocket.receive(response);
-                    float timeReceived = System.nanoTime();
-                    float roundTripTime = timeSent - timeReceived;
+                    double timeReceived = System.nanoTime();
+                    double roundTripTime = (timeReceived - timeSent) / 1000000;
                     String testResponse = new String(response.getData(), response.getOffset(), response.getLength());
                     System.out.println("Response: " + testResponse);
-                    System.out.println("Round Trip time was: " + roundTripTime + " nanoseconds.");
+                    System.out.println("Round Trip time was: " + roundTripTime + " milliseconds.");
                 } catch(IOException SoTimeout){
                     System.out.println("timed out");
                 }
