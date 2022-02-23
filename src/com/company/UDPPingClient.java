@@ -21,13 +21,19 @@ public class UDPPingClient {
                 int serverPort = 12000;
                 //byte[] ethanIP = new byte[]{byte 147, 222, 178, 209};
                 //InetAddress serverIP = InetAddress.getByName("147.222.178.209");
-                InetAddress serverIP = InetAddress.getByName("192.168.56.1");
+                InetAddress serverIP = InetAddress.getByName("localhost");
                 clientSocket = new DatagramSocket();
+                clientSocket.setSoTimeout(1000);
                 query = new DatagramPacket (message.getBytes(), message.getBytes().length, serverIP, serverPort);
                 float timeSent = System.nanoTime();
                 clientSocket.send(query);
                 response = new DatagramPacket(new byte[1024], 1024);
-                clientSocket.receive(response);
+                try{
+                    clientSocket.receive(response);
+                } catch(IOException SoTimeout){
+                    System.out.println("timed out");
+                }
+
                 float timeReceived = System.nanoTime();
                 float roundTripTime = timeSent - timeReceived;
                 String testResponse = new String(response.getData(), response.getOffset(), response.getLength());
