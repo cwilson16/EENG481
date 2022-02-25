@@ -16,7 +16,7 @@ public class UDPPingClient {
                 Date now = new Date();
                 String message = "Ping " + (i+1) + " " + now.toString();
                 int serverPort = 12000;
-                InetAddress serverIP = InetAddress.getByName("localhost");
+                InetAddress serverIP = InetAddress.getByName("169.254.10.90");
                 clientSocket = new DatagramSocket();
                 clientSocket.setSoTimeout(1000);
                 query = new DatagramPacket (message.getBytes(), message.getBytes().length, serverIP, serverPort);
@@ -31,7 +31,7 @@ public class UDPPingClient {
                     System.out.println("Response: " + testResponse);
                     System.out.println("Round Trip time was: " + roundTripTime + " milliseconds.");
                 } catch(IOException SoTimeout){
-                    System.out.println("Packet: "+ (i+1) + " timed out");
+                    System.out.println("Packet "+ (i+1) + " timed out");
                 }
                 clientSocket.close();
             }
